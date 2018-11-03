@@ -150,7 +150,7 @@ class Encipher
         $funcVarDefCode = $this->_getFuncVarDefCode($usedFuncMaps, $funcChars, $funcStrVar);
         $prefixCode = preg_replace("/\r|\n|\s+/is", "", $funcVarDefCode. strtr($baseCodeOfHostedCode, $regVars));
 
-        $headers = array_map('trim', array_merge(array('<?php', '/*'), $this->comments, array('*/')));
+        $headers = array_map('trim', array_merge(array('<?php'),[], []));
         $hookKey = strtr(md5(implode("\r\n", $headers) . "\r\n" . $prefixCode), $enkey, $dekey);
         $evalEmbedCode = $this->_getEvalEmbedCode($decodeCodeOfHostedCode, $regVars, $enkey, $dekey);
         /**
